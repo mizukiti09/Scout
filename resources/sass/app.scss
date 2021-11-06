@@ -6,3 +6,18 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.swiper {
+  width: 600px;
+  height: 300px;
+  &-button-prev, &-button-next {
+    top: 45% !important;
+  }
+}
+
+
+
+.main-content {
+  overflow: hidden;
+}
+
