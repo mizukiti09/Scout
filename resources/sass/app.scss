@@ -15,9 +15,20 @@
   }
 }
 
-
-
 .main-content {
   overflow: hidden;
 }
 
+.unit {
+  display: flex;
+  &-each {
+    position:relative;
+    bottom:-12px;
+    left: 10px;
+  }
+}
+
+.page-container {
+  padding: 30px 35px;
+  margin: 30px auto 60px;
+}

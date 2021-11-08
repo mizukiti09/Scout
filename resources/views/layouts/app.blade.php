@@ -23,6 +23,14 @@
 </head>
 <body>
     <div id="app">
+
+    <!-- フラッシュメッセージ -->
+    @if (session('flash_message'))
+        <div class="alert alert-primary text-center" role="alert">
+            {{ session('flash_message') }}
+        </div>
+    @endif
+    
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -66,6 +74,10 @@
                                         {{ __('Logout') }}
                                     </a>
 
+                                    <a class="dropdown-item" href="{{ route('myPage') }}">
+                                        {{ __('MyPage') }}
+                                    </a>
+                                    
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>

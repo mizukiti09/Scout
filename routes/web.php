@@ -22,3 +22,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/userList', 'UserController@userList')->name('userList');
+
+Route::get('/myPage', 'UserController@myPage')->name('myPage');
+
+Route::post('/myPage', 'UserController@castCreate')->name('castCreate');
