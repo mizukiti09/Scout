@@ -26,3 +26,5 @@ Route::get('/userList', 'UserController@userList')->name('userList');
 Route::get('/myPage', 'UserController@myPage')->name('myPage');
 
 Route::post('/myPage', 'UserController@castCreate')->name('castCreate');
+
+Route::get('/create_case/{cast_id}', 'CaseController@create')->name('create_case');

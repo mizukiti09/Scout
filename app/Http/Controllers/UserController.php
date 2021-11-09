@@ -87,7 +87,11 @@ class UserController extends Controller
         }
         
         $cast->save();
+        $cast_last_insertId = $cast->id;
 
-        return redirect('/myPage')->with('flash_message', __('CastRegister'));
+
+        return redirect('/myPage')->with([
+            'flash_msg_cast_register' => __('CastRegister'),
+            'cast_last_id' => $cast_last_insertId]);
     }
 }

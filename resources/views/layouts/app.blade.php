@@ -25,9 +25,14 @@
     <div id="app">
 
     <!-- フラッシュメッセージ -->
-    @if (session('flash_message'))
+    @if (session('flash_msg_cast_register'))
         <div class="alert alert-primary text-center" role="alert">
-            {{ session('flash_message') }}
+            <p>{{ session('flash_msg_cast_register') }}</p> 
+            <div>
+                <p>案件作成しますか？</p>
+                <a href="{{ route('create_case', ['cast_id' => session('cast_last_id') ]) }}">はい</a>
+                <a href="">いいえ</a>
+            </div>
         </div>
     @endif
     

@@ -74,7 +74,7 @@ class RegisterController extends Controller
             $path = null;
         }
 
-        dd($data);
+        
 
 
         return User::create([
