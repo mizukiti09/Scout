@@ -13,18 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/userList', 'UserController@userList')->name('userList');
 
-Route::get('/myPage', 'UserController@myPage')->name('myPage');
+Route::get('/myPage', 'UserController@myPage')->name('myPage')->middleware('auth');
 
 Route::post('/myPage', 'UserController@castCreate')->name('castCreate');
 
 Route::get('/create_case/{cast_id}', 'CaseController@create')->name('create_case');
+
+Route::post('/create_case/{cast_id}', 'CaseController@callback')->name('callback');
+

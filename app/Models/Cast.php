@@ -13,5 +13,5 @@ class Cast extends Model
     //ロックの掛け方にはfillableかguardedの二種類がある。
     // どちらしか指定できない。
 
-    protected $fillable = ['cast_name', 'age', 'height', 'weight', 'bust', 'phone_number', 'ng_play', 'area', 'experience', 'face_img1', 'face_img2', 'body_img1', 'body_img2'];
+    protected $fillable = ['cast_name', 'age', 'height', 'weight', 'bust', 'phone_number', 'ng_play', 'area', 'current', 'experience', 'face_img1', 'face_img2', 'body_img1', 'body_img2'];
 }

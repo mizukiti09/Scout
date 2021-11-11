@@ -3,9 +3,11 @@
 @section('content')
 <div class="page-container">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-8">
       <form method="POST" enctype="multipart/form-data" action="{{ route('myPage') }}">
       @csrf
+
+      
 
       <!-- === キャスト名 ========== -->
         <div class="form-group row">
@@ -161,6 +163,21 @@
             </div>
       </div>
 
+      <!-- === 現在の在籍店舗 ========== -->
+      <div class="form-group row">
+            <label for="experience" class="col-md-4 col-form-label text-md-right">{{ __('Current') }}</label>
+
+            <div class="col-md-6">
+                <input id="experience" type="text" class="form-control @error('current') is-invalid @enderror" name="current" value="{{ old('current') }}" required autocomplete="current" autofocus>
+
+                @error('current')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+      </div>
+
       <!-- === 経験店舗 ========== -->
       <div class="form-group row">
             <label for="experience" class="col-md-4 col-form-label text-md-right">{{ __('Experience') }}</label>
@@ -252,15 +269,21 @@
                 @enderror
 
                 <div class="col-auto" style="position:absolute;right:0;bottom:-60px;">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Create Cast</button>
                 </div>
             </div>
-      </div>
+        </div>
+        </form>
+    </div>
 
-      
-    </form>
-  </div>
-
+    <div class="col-sm-4">
+        <div class="decided-not">
+            未確定案件
+        </div>
+        <div class="decided">
+            確定案件
+        </div>
+    </div>  
   </div>
   
 </div>

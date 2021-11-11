@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cast;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -17,9 +18,9 @@ class UserController extends Controller
 
     public function myPage()
     {
-        
+        $user = Auth::user();
 
-        return view('users.myPage');
+        return view('users.myPage', compact('user'));
     }
 
     public function castCreate(Request $request)

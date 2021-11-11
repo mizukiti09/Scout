@@ -7,11 +7,70 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// リセット
+a {
+  transition: .3s;
+  margin:0;
+  padding:0;
+  font-size:100%;
+  vertical-align:baseline;
+  background:transparent;
+  text-decoration: none;
+  color: white;
+}
+a:hover {
+  transition: .3s;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  color:rgba(4, 114, 124, 0.4);
+}
+
+// video
+.video-wrap{
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(-45deg, rgba(4, 114, 124, 0.4), rgba(17, 66, 99, 0.6));
+  position: fixed; /*positionプロパティを指定*/
+  right: 0;
+  top: 0;
+  z-index: -100; /*z-indexプロパティを指定*/
+  overflow: hidden;
+}
+#bg-video{
+  /*天地中央配置*/
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*縦横幅指定*/
+  width: 177.77777778vh; /* 16:9 の幅→16 ÷ 9＝ 177.77% */
+  height: 56.25vw; /* 16:9の幅 → 9 ÷ 16 = 56.25% */
+  min-height: 100%;
+  min-width: 100%;
+}
+
+ .gate-title {
+  position: absolute;
+  top: 37%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 98px;
+  font-family: serif;
+  color: white;
+  text-shadow: 5px 7px 5px black;
+}
+
+
 .swiper {
   width: 600px;
   height: 300px;
   &-button-prev, &-button-next {
     top: 45% !important;
+  }
+  &-container {
+    position: relative;
   }
 }
 
@@ -31,4 +90,26 @@
 .page-container {
   padding: 30px 35px;
   margin: 30px auto 60px;
+}
+
+.cast-data {
+  &-item-col {
+    background: aliceblue;
+    border: 1px solid darkslategray;
+    padding: 6px;
+    text-align: center;
+  }
+  &-col {
+    border: 1px solid darkslategray;
+    padding: 6px 13px;
+  }
+}
+
+.decided {
+  background: aquamarine;
+  height: 250px;
+  &-not {
+    background: antiquewhite;
+    height: 250px;
+  }
 }
