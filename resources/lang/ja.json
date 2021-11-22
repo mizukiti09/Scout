@@ -19,5 +19,9 @@
   "BodyImg1": "下着全身写メ1",
   "BodyImg2": "下着全身写メ2",
   "CastRegister": "キャスト登録しました。",
-  "Send": "送信しました"
+  "Send": "送信しました",
+  "CastCreate": "キャスト作成",
+  "NotDecided": "未確定",
+  "Decided": "確定",
+  "Done": "完了"
 }

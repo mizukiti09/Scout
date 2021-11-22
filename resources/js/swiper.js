@@ -1,11 +1,6 @@
-// core version + navigation, pagination modules:
-import Swiper, { Navigation, Pagination } from 'swiper';
-// configure Swiper to use modules
-Swiper.use([Navigation, Pagination]);
 
-import 'swiper/swiper-bundle.css';
 
-var mySwiper = new Swiper('.swiper-container', {
+var swiper = new Swiper('.swiper-container', {
   // Optional parameters
   loop: true,
   // If we need pagination

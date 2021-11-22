@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,8 +24,15 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/userList', 'UserController@userList')->name('userList');
 
 Route::get('/myPage', 'UserController@myPage')->name('myPage')->middleware('auth');
+// Route::get('/api/myPage/{cast_id}', 'UserController@myCastInfo');
 
-Route::post('/myPage', 'UserController@castCreate')->name('castCreate');
+  
+// Route::get('/myPage/{cast_id}', 'UserController@myCastInfo')->name('myCastInfo');
+
+
+
+Route::get('/castCreate', 'UserController@castCreateForm')->name('castCreateForm');
+Route::post('/castCreate', 'UserController@castCreate')->name('castCreate');
 
 Route::get('/create_case/{cast_id}', 'CaseController@create')->name('create_case');
 

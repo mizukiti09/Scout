@@ -1,4 +1,4 @@
-<nav class="header navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<nav class="header navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
   <div class="container">
     <a class="navbar-brand" href="{{ url('/') }}">
         Scout
@@ -43,6 +43,10 @@
 
                         <a class="dropdown-item" href="{{ route('myPage')}}">
                             {{ __('MyPage') }}
+                        </a>
+
+                        <a class="dropdown-item" href="{{ route('castCreateForm')}}">
+                            {{ __('CastCreate') }}
                         </a>
                         
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

@@ -14,4 +14,9 @@ class Cast extends Model
     // どちらしか指定できない。
 
     protected $fillable = ['cast_name', 'age', 'height', 'weight', 'bust', 'phone_number', 'ng_play', 'area', 'current', 'experience', 'face_img1', 'face_img2', 'body_img1', 'body_img2'];
+
+    public function cases()
+    {
+        return $this->hasMany('App\Models\Case_Model');
+    }
 }

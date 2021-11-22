@@ -11010,6 +11010,12 @@ a:hover {
   min-width: 100%;
 }
 
+.drawer-hamburger-icon,
+.drawer-hamburger-icon:before,
+.drawer-hamburger-icon:after {
+  background-color: grey;
+}
+
 .gate-title {
   position: absolute;
   top: 37%;
@@ -11050,8 +11056,44 @@ a:hover {
 }
 
 .page-container {
-  padding: 30px 35px;
+  padding: 20px 20px;
   margin: 30px auto 60px;
+}
+
+.case-header {
+  display: flex;
+  height: 8vh;
+}
+
+.case-state {
+  height: 100%;
+  padding: 0;
+}
+
+.case-state-not {
+  background: antiquewhite;
+}
+
+.case-state-decided {
+  background: skyblue;
+}
+
+.case-state-done {
+  background: greenyellow;
+}
+
+.case-state-info {
+  height: 50vh;
+  padding: 0;
+  overflow: scroll;
+  background: whitesmoke;
+}
+
+.case-state-info .cast-one {
+  padding: 15px 20px;
+  border-bottom: 1px solid grey;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .cast-data-item-col {
@@ -11074,5 +11116,13 @@ a:hover {
 .decided-not {
   background: antiquewhite;
   height: 250px;
+}
+
+.myCast-img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  background: currentColor;
 }
 

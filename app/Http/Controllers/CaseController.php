@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Case_Model;
 use App\Models\Cast;
 use Illuminate\Http\Request;
-use CURLFile;
+use Illuminate\Support\Facades\Auth;
 
 class CaseController extends Controller
 {
@@ -41,13 +42,8 @@ NGプレイ：$cast[ng_play]
 提案店舗：$request[suggestion]
 EOT;
 
-        
-        $img = __DIR__.'/storage/app/public/'.$cast['face_img1'];
-    
-
         $query = http_build_query([
-            'message' => $message,
-            "imageFile" => $img,
+            'message' => $message
         ]);
         $header = [
                 'Content-Type: application/x-www-form-urlencoded',
@@ -66,31 +62,15 @@ EOT;
         curl_exec($ch);
         curl_close($ch);
 
-        //====================================
+        $case = new Case_Model;
 
-        $img = __DIR__.'/storage/app/public/'.$cast['face_img1'];
-    
-        dd($img);
-        $query = http_build_query([
-            "imageFile" => $img,
-        ]);
-        $header = [
-                'Content-Type: image/jpeg',
-                'Authorization: Bearer ' . $token,
-                'Content-Length: ' . strlen($query)
-        ];
-        $ch = curl_init('https://notify-api.line.me/api/notify');
-        $options = [
-            CURLOPT_RETURNTRANSFER  => true,
-            CURLOPT_POST            => true,
-            CURLOPT_HTTPHEADER      => $header,
-            CURLOPT_POSTFIELDS      => $query
-        ];
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt_array($ch, $options);
-        curl_exec($ch);
-        curl_close($ch);
+        $case->suggestion_store = $request['suggestion'];
+        $case->decided_flg = 0;
+        $case->done_flg = 0;
+        $case->user_id = Auth::id();
+        $case->cast_id = $cast_id;
 
+        $case->save();
 
         return redirect('/myPage')->with([
             'flash_msg' => __('Send')

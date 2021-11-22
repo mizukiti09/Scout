@@ -26,6 +26,8 @@ a:hover {
   color:rgba(4, 114, 124, 0.4);
 }
 
+
+
 // video
 .video-wrap{
   width: 100vw;
@@ -51,6 +53,10 @@ a:hover {
   min-width: 100%;
 }
 
+.drawer-hamburger-icon, .drawer-hamburger-icon:before, .drawer-hamburger-icon:after {
+  background-color: grey;
+}
+
  .gate-title {
   position: absolute;
   top: 37%;
@@ -74,6 +80,8 @@ a:hover {
   }
 }
 
+
+
 .main-content {
   overflow: hidden;
 }
@@ -88,8 +96,40 @@ a:hover {
 }
 
 .page-container {
-  padding: 30px 35px;
+  padding: 20px 20px;
   margin: 30px auto 60px;
+}
+
+.case {
+  &-header {
+    display: flex;
+    height: 8vh;
+  }
+  &-state {
+    height: 100%;
+    padding: 0;
+    &-not {
+      background:antiquewhite;
+    }
+    &-decided {
+      background:skyblue;
+    }
+    &-done {
+      background:greenyellow;
+    }
+    &-info {
+      height: 50vh;
+      padding: 0;
+      overflow: scroll;
+      background: whitesmoke;
+      & .cast-one {
+        padding: 15px 20px;
+        border-bottom: 1px solid grey;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    }
+  }
 }
 
 .cast-data {
@@ -111,5 +151,14 @@ a:hover {
   &-not {
     background: antiquewhite;
     height: 250px;
+  }
+}
+
+.myCast {
+  &-img {
+    height: 100%;
+    width:100%; 
+    object-fit: contain; 
+    background: currentColor;
   }
 }

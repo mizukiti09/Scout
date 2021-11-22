@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Route::get('/myPage', 'App\Http\Controllers\UserController@myPage')->name('myPage')->middleware('auth');
+// Route::get('/myPage/{cast_id}', 'App\Http\Controllers\UserController@myCastInfo');
+
+// Route::post('/myPage/{cast_id}', 'UserController@myCastInfo');
+// Route::group(['middleware' => ['api']], function(){
+//     Route::get('/myPage', 'UserController@myCastInfo');
+// });
+Route::get('/myPage', 'UserController@myCastInfo');
+Route::get('/myPage/{cast_id}', 'UserController@myCastInfo');

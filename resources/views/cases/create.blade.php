@@ -85,7 +85,7 @@
       </div>
 
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4" style="margin-bottom:40px;">
         <div class="card-body" style="position:relative;">
           <h5 class="card-title">提案店舗</h5>
           <form method="POST" enctype="multipart/form-data" action="">
