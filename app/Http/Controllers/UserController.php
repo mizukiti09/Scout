@@ -17,7 +17,7 @@ class UserController extends Controller
         return view('users.userList', compact('users'));
     }
 
-    public function myPage($case_id = null)
+    public function myPage(Request $request)
     {
         $user = Auth::user();
         $user_cases = User::find($user['id'])->cases;
@@ -37,62 +37,17 @@ class UserController extends Controller
             ->where('cases.decided_flg', '=', 1)
             ->get();
 
-        $case = Case_Model::find($case_id);
-
-        if (!empty($case)) {
-            $cast = Cast::find($case['cast_id']);
-        } else {
-            $cast = null;
-        }
-
-        $cast = Cast::find(17);
-        // $cast = 0;
 
         return view(
             'users.myPage',
-            compact('user', 'not_d_cast', 'd_cast', 'cast')
+            compact('user', 'not_d_cast', 'd_cast')
         );
     }
 
     public function myCastInfo(Request $request)
     {
-        // $cast_id = $request['cast_id'];
-
-        // $cast_id = $request['cast_id'];
-
-        $userId = 22;
-        // dd($userId);
-        $user_cases = User::find($userId);
-        $user_cases = $user_cases->cases;
-        // dd($user_cases);
-
-        $not_decided = $user_cases->whereIn('decided_flg', 0);
-        $decided = $user_cases->whereIn('decided_flg', 1);
-
-        // dd($not_decided);
-
-        $not_d_cast = \DB::table('cases')
-            ->rightJoin('casts', 'cases.cast_id', '=', 'casts.id')
-            ->where('cases.user_id', '=', $userId)
-            ->where('cases.decided_flg', '=', 0)
-            ->get();
-
-        $d_cast = \DB::table('cases')
-            ->rightJoin('casts', 'cases.cast_id', '=', 'casts.id')
-            ->where('cases.user_id', '=', $userId)
-            ->where('cases.decided_flg', '=', 1)
-            ->get();
-
-        // dd($not_d_cast);
-
-        $cast_id = 17;
-        $cast = Cast::find($cast_id);
-
-        // dd($cast);
-        return view(
-            'users.myPage',
-            compact('user', 'not_d_cast', 'd_cast', 'cast')
-        );
+        $cast = Cast::find($request['cast_id']);
+        return $cast;
     }
 
     public function castCreateForm()

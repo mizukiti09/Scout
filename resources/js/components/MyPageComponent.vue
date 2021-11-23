@@ -5,38 +5,46 @@
       :options="slickOptions"
       class="slick-outer"
       style="width: 100%; height: 40vh; background: currentColor;"
+      v-if="i_cast == 0"
+    >
+      <div class="slick-cont-img"><img :src="img_no_Path" class="slick-img" /></div>
+      <div class="slick-cont-img"><img :src="img_no_Path" class="slick-img" /></div>
+      <div class="slick-cont-img"><img :src="img_no_Path" class="slick-img" /></div>
+      <div class="slick-cont-img"><img :src="img_no_Path" class="slick-img" /></div>
+      
+    </Slick>
+    <Slick
+      ref="slick"
+      :options="slickOptions"
+      class="slick-outer"
+      style="width: 100%; height: 40vh; background: currentColor;"
+      v-else-if="i_cast !== 0"
     >
       <!-- 顔写真1 -->
       <div class="slick-cont-img">
-        <img :src="'storage/' + cast.face_img1" class="slick-img" />
+        <img :src="img_Path + i_cast.face_img1" class="slick-img" />
       </div>
       <!-- 顔写真2 -->
-      <div class="slick-cont-img" v-if="cast.face_img2">
-        <img :src="'storage/' + cast.face_img2" class="slick-img" />
+      <div class="slick-cont-img" v-if="i_cast.face_img2">
+        <img :src="img_Path + i_cast.face_img2" class="slick-img" />
       </div>
       <div class="slick-cont-img" v-else>
-        <img :src="'img/no-thum.png'" class="slick-img" />
+        <img :src="img_no_Path" class="slick-img" />
       </div>
       <!-- 下着全身1 -->
       <div class="slick-cont-img">
-        <img :src="'storage/' + cast.body_img1" class="slick-img" />
+        <img :src="img_Path + i_cast.body_img1" class="slick-img" />
       </div>
       <!-- 下着全身2 -->
-      <div class="slick-cont-img" v-if="cast.body_img2">
-        <img :src="'storage/' + cast.body_img2" class="slick-img" />
+      <div class="slick-cont-img" v-if="i_cast.body_img2">
+        <img :src="img_Path + i_cast.body_img2" class="slick-img" />
       </div>
       <div class="slick-cont-img" v-else>
-        <img :src="'img/no-thum.png'" class="slick-img" />
+        <img :src="img_no_Path" class="slick-img" />
       </div>
     </Slick>
 
     <div class="row">
-      <!-- <style>
-            .col-4 {
-                padding-left: 0;
-                padding-right: 0;
-            }
-        </style> -->
       <div class="col-sm-12 case-header">
         <div class="col-4 case-state">
           <h2 class="accordion-header" id="flush-headingOne">
@@ -76,7 +84,7 @@
               aria-expanded="false"
               aria-controls="flush-collapseThree"
             >
-              完了
+              
             </button>
           </h2>
         </div>
@@ -87,9 +95,9 @@
         aria-labelledby="flush-headingOne"
         data-bs-parent="#accordionFlushExample"
       >
-        <!-- <div class="accordion-body case-state-info" >
-                    <case-component :casts="{{ $not_d_cast }}"></case-component>
-                </div> -->
+        <div class="accordion-body case-state-info" >
+            <Case :cases="not_decided" />
+        </div>
       </div>
 
       <div
@@ -114,17 +122,20 @@
           text.text.3
         </div>
       </div>
-      
     </div>
   </div>
 </template>
 <script>
 import Slick from 'vue-slick'
+import Case from '../components/CaseComponent.vue'
 
 export default {
-  props: ['cast'],
+  props: ['not_decided', 'decided'],
   data: function () {
     return {
+      i_cast: 0,
+      img_no_Path: 'http://localhost:8000/img/no-thum.png',
+      img_Path: 'http://localhost:8000/storage/',
       slickOptions: {
         arrows: true, //スライドの矢印ボタン
         dots: false, //ドットマーク
@@ -137,7 +148,8 @@ export default {
     }
   },
   components: {
-    Slick,
+    Slick, 
+    Case,
   },
 }
 </script>

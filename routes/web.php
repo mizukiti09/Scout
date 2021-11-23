@@ -24,6 +24,8 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/userList', 'UserController@userList')->name('userList');
 
 Route::get('/myPage', 'UserController@myPage')->name('myPage')->middleware('auth');
+
+
 // Route::get('/api/myPage/{cast_id}', 'UserController@myCastInfo');
 
   

@@ -90,7 +90,7 @@
 
     
     <script src="{{ mix('js/swiper.js') }}"></script>
-    <script src="js/slick.min.js"></script>
+    <script src="{{asset('js/slick.min.js')}}"></script>
 </body>
 
 </html>

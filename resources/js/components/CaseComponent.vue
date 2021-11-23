@@ -1,39 +1,43 @@
 <template>
-
   <div>
-    <div class="cast-one" v-for="(cast,i) in casts" :key="i">
-      {{ cast.cast_name }}
-      <button  class="btn btn-primary" v-on:click="onClick(cast.id)">Img</button>
+    <div class="cast-one" v-for="(data, i) in cases" :key="i">
+      {{ data.cast_name }}
+        <form @submit.prevent="onClick(data.id)">
+          <button type="submit" class="btn btn-primary">Img</button>
+        </form>
+        
+      
+      
     </div>
   </div>
-  
-  
-    
 </template>
 
 <script>
-
 export default {
-  props: ['casts'],
+  props: ['cases'],
   data() {
     return {
-      cast_id: ''
+      cast_id: '',
     }
   },
   methods: {
-    onClick: function(id) {
-      console.log(id);
-      this.cast_id = id;
+    onClick: function (id) {
+      console.log(id)
+      this.cast_id = id
 
-      // let url = '/api/myPage'
-      var self = this;
+      var c_id = {c_id: this.cast_id};
+      var self = this
 
-
-      this.$axios.post('https://localhost:8000/api/myPage', self.cast_id)
-          .then(response => console.log(response))
-          .catch(error => console.log(error))
-    }
+      this.$axios
+        .post("/api/myPage" , {
+          cast_id: self.cast_id
+        })
+        .then(res => {
+        console.log(res['data'])
+        this.$parent.i_cast = res['data']
+        })
+        .catch((error) => console.log(error))
+    },
   },
 }
 </script>
-

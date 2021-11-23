@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -56,8 +55,5 @@ Vue.component('case-component', require('./components/CaseComponent.vue').defaul
 
 const app = new Vue({
     el: '#app',
-    
+
 });
-
-
-
