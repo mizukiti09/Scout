@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\ApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::get('/myPage', 'App\Http\Controllers\UserController@myPage')->name('myPage')->middleware('auth');
-// Route::get('/myPage/{cast_id}', 'App\Http\Controllers\UserController@myCastInfo');
 
-Route::post('/myPage', 'UserController@myCastInfo');
-// Route::group(['middleware' => ['api']], function(){
-//     Route::get('/myPage', 'UserController@myCastInfo');
-// });
-// Route::post('/myPage/{c_id}', 'App\Http\Controllers\UserController@myCastInfo');
-// Route::get('/myPage/{cast_id}', 'UserController@myCastInfo');
+Route::post('/myPage', 'ApiController@myPageImgShow');
+Route::post('/myPage/decided', 'ApiController@myPageChangeDecided');

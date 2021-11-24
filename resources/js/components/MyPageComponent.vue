@@ -7,11 +7,18 @@
       style="width: 100%; height: 40vh; background: currentColor;"
       v-if="i_cast == 0"
     >
-      <div class="slick-cont-img"><img :src="img_no_Path" class="slick-img" /></div>
-      <div class="slick-cont-img"><img :src="img_no_Path" class="slick-img" /></div>
-      <div class="slick-cont-img"><img :src="img_no_Path" class="slick-img" /></div>
-      <div class="slick-cont-img"><img :src="img_no_Path" class="slick-img" /></div>
-      
+      <div class="slick-cont-img">
+        <img :src="img_no_Path" class="slick-img" />
+      </div>
+      <div class="slick-cont-img">
+        <img :src="img_no_Path" class="slick-img" />
+      </div>
+      <div class="slick-cont-img">
+        <img :src="img_no_Path" class="slick-img" />
+      </div>
+      <div class="slick-cont-img">
+        <img :src="img_no_Path" class="slick-img" />
+      </div>
     </Slick>
     <Slick
       ref="slick"
@@ -84,7 +91,7 @@
               aria-expanded="false"
               aria-controls="flush-collapseThree"
             >
-              
+              完了
             </button>
           </h2>
         </div>
@@ -95,8 +102,8 @@
         aria-labelledby="flush-headingOne"
         data-bs-parent="#accordionFlushExample"
       >
-        <div class="accordion-body case-state-info" >
-            <Case :cases="not_decided" />
+        <div class="accordion-body case-state-info">
+          <Case :cases="not_decided" />
         </div>
       </div>
 
@@ -106,10 +113,9 @@
         aria-labelledby="flush-headingTwo"
         data-bs-parent="#accordionFlushExample"
       >
-        <!-- <ul class="accordion-body" >
-            <case-component 
-            :casts="{{ $d_cast }}"></case-component>
-            </ul> -->
+        <div class="accordion-body case-state-info">
+          <Case :cases="decided" />
+        </div>
       </div>
 
       <div
@@ -118,8 +124,9 @@
         aria-labelledby="flush-headingOne"
         data-bs-parent="#accordionFlushExample"
       >
-        <div class="accordion-body">
-          text.text.3
+        <div class="accordion-body case-state-info">
+          <div class="cast-one">サンプル3</div>
+          <div class="cast-one">サンプル3</div>
         </div>
       </div>
     </div>
@@ -148,7 +155,7 @@ export default {
     }
   },
   components: {
-    Slick, 
+    Slick,
     Case,
   },
 }

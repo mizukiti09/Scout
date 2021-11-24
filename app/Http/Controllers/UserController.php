@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cast;
-use App\Models\Case_Model;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,30 +24,25 @@ class UserController extends Controller
         $not_decided = $user_cases->whereIn('decided_flg', 0);
         $decided = $user_cases->whereIn('decided_flg', 1);
 
-        $not_d_cast = \DB::table('cases')
-            ->rightJoin('casts', 'cases.cast_id', '=', 'casts.id')
+        $not_d_cast = \DB::table('casts')
+            ->join('cases', 'cases.cast_id', '=', 'casts.id')
             ->where('cases.user_id', '=', $user['id'])
             ->where('cases.decided_flg', '=', 0)
             ->get();
 
-        $d_cast = \DB::table('cases')
-            ->rightJoin('casts', 'cases.cast_id', '=', 'casts.id')
+        $d_cast = \DB::table('casts')
+            ->join('cases', 'cases.cast_id', '=', 'casts.id')
             ->where('cases.user_id', '=', $user['id'])
             ->where('cases.decided_flg', '=', 1)
             ->get();
 
-
+        
         return view(
             'users.myPage',
             compact('user', 'not_d_cast', 'd_cast')
         );
     }
 
-    public function myCastInfo(Request $request)
-    {
-        $cast = Cast::find($request['cast_id']);
-        return $cast;
-    }
 
     public function castCreateForm()
     {
