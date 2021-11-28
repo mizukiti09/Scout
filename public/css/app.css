@@ -11071,15 +11071,15 @@ a:hover {
 }
 
 .case-state-not {
-  background: antiquewhite;
+  color: antiquewhite;
 }
 
 .case-state-decided {
-  background: skyblue;
+  color: skyblue;
 }
 
 .case-state-done {
-  background: greenyellow;
+  color: greenyellow;
 }
 
 .case-state-info {

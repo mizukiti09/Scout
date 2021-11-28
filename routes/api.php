@@ -22,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/myPage', 'ApiController@myPageImgShow');
 Route::post('/myPage/decided', 'ApiController@myPageChangeDecided');
+Route::post('/myPage/done', 'ApiController@myPageChangeDone');

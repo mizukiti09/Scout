@@ -110,13 +110,13 @@ a:hover {
         height: 100%;
         padding: 0;
         &-not {
-            background: antiquewhite;
+            color: antiquewhite;
         }
         &-decided {
-            background: skyblue;
+            color: skyblue;
         }
         &-done {
-            background: greenyellow;
+            color: greenyellow;
         }
         &-info {
             height: 50vh;

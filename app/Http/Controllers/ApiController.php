@@ -18,7 +18,13 @@ class ApiController extends Controller
     {
         DB::update('update cases set decided_flg = 1 where id = ?', [$request->input('case_id')]);
 
-        
-        return $request;
+        return redirect(route('myPage'));
+    }
+
+    public function myPageChangeDone(Request $request)
+    {
+        DB::update('update cases set done_flg = 1 where id = ?', [$request->input('case_id')]);
+
+        return redirect(route('myPage'));
     }
 }

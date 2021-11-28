@@ -5,6 +5,7 @@
     <my-page-component 
     :not_decided="{{ $not_d_cast }}"
     :decided="{{ $d_cast }}"
+    :done="{{ $done_cast }}"
     ></my-page-component>
 
 </div>

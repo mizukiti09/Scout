@@ -34,15 +34,22 @@ class UserController extends Controller
             ->join('cases', 'cases.cast_id', '=', 'casts.id')
             ->where('cases.user_id', '=', $user['id'])
             ->where('cases.decided_flg', '=', 1)
+            ->where('cases.done_flg', '=', 0)
             ->get();
 
-        
+        $done_cast = \DB::table('casts')
+            ->join('cases', 'cases.cast_id', '=', 'casts.id')
+            ->where('cases.user_id', '=', $user['id'])
+            ->where('cases.done_flg', '=', 1)
+            ->get();
+
+            
+
         return view(
             'users.myPage',
-            compact('user', 'not_d_cast', 'd_cast')
+            compact('user', 'not_d_cast', 'd_cast', 'done_cast')
         );
     }
-
 
     public function castCreateForm()
     {

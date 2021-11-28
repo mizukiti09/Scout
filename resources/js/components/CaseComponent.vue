@@ -3,7 +3,7 @@
     <div class="cast-one" v-for="(data, i) in cases" :key="i" v-show="show">
       <form @submit.prevent style="position: relative;">
         <div class="accordion" id="accordionExample">
-          <div class="accordion-item" >
+          <div class="accordion-item">
             <h2 class="accordion-header" :id="'heading' + i">
               <button
                 class="accordion-button"
@@ -57,14 +57,61 @@
                   <br />
                   提案店舗：{{ data.suggestion_store }}
                   <br />
+                  <!-- Vertically centered modal -->
+                  <!-- Button trigger modal -->
                   <button
-                    type="submit"
-                    class="btn"
-                    style="background: skyblue;"
-                    v-on:click="changeDecided(data.id, data.decided_flg)"
+                    type="button"
+                    class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    :data-bs-target="'#exampleModal'  + data.id"
                   >
-                    確定
+                    {{ stateChangeText }}
                   </button>
+                  <div
+                    class="modal fade"
+                    :id="'exampleModal' + data.id"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">
+                            {{ stateChangeText }}：{{ data.cast_name }}
+                          </h5>
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        <div class="modal-body">
+                          実行しますか？
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            いいえ
+                          </button>
+                          <button
+                            type="submit"
+                            class="btn"
+                            style="background: skyblue;"
+                            v-on:click="
+                              changeDecided(data.id, data.decided_flg)
+                            "
+                          >
+                            {{ stateChangeText }}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -77,14 +124,14 @@
 
 <script>
 export default {
-  props: ['cases'],
+  props: ['cases', 'stateChangeText'],
   data() {
     return {
       cast_id: '',
       case_id: '',
       show: true,
     }
-  },          
+  },
   methods: {
     imgShow: function (cast_id) {
       console.log('imgShowのCastのIDは' + cast_id)
@@ -108,9 +155,7 @@ export default {
       console.log('decided_flg：' + decided_flg)
       var self = this
       if (decided_flg == 0) {
-        var dom = this.$el + self.case_id;
-        console.log(dom)
-        self.case_id = id;
+        self.case_id = id
         this.$axios
           .post('/api/myPage/decided', {
             case_id: self.case_id,
@@ -118,14 +163,27 @@ export default {
           .then((res) => {
             console.log('未確定案件を確定に変更。')
             console.log(res['data'])
-            self.show = false
+            window.location.reload()
           })
           .catch((error) => {
             console.log('changeDecidedは正常に起動していません。：')
             console.log(error)
           })
       } else if (decided_flg == 1) {
-        console.log('テスト')
+        self.case_id = id
+        this.$axios
+          .post('/api/myPage/done', {
+            case_id: self.case_id,
+          })
+          .then((res) => {
+            console.log('確定案件を完了に変更。')
+            console.log(res['data'])
+            window.location.reload()
+          })
+          .catch((error) => {
+            console.log('changeDecidedは正常に起動していません。：')
+            console.log(error)
+          })
       }
     },
   },

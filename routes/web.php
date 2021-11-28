@@ -26,11 +26,6 @@ Route::get('/userList', 'UserController@userList')->name('userList');
 Route::get('/myPage', 'UserController@myPage')->name('myPage')->middleware('auth');
 
 
-// Route::get('/api/myPage/{cast_id}', 'UserController@myCastInfo');
-
-  
-// Route::get('/myPage/{cast_id}', 'UserController@myCastInfo')->name('myCastInfo');
-
 
 
 Route::get('/castCreate', 'UserController@castCreateForm')->name('castCreateForm');

@@ -53,7 +53,7 @@
 
     <div class="row">
       <div class="col-sm-12 case-header">
-        <div class="col-4 case-state">
+        <div class="col-4 case-state bg-dark">
           <h2 class="accordion-header" id="flush-headingOne">
             <button
               class="accordion-button collapsed case-state-not"
@@ -67,7 +67,7 @@
             </button>
           </h2>
         </div>
-        <div class="col-4 case-state">
+        <div class="col-4 case-state bg-dark">
           <h2 class="accordion-header" id="flush-headingTwo">
             <button
               class="accordion-button collapsed case-state-decided"
@@ -81,7 +81,7 @@
             </button>
           </h2>
         </div>
-        <div class="col-4 case-state">
+        <div class="col-4 case-state bg-dark">
           <h2 class="accordion-header" id="flush-headingThree">
             <button
               class="accordion-button collapsed case-state-done"
@@ -103,7 +103,7 @@
         data-bs-parent="#accordionFlushExample"
       >
         <div class="accordion-body case-state-info">
-          <Case :cases="not_decided" />
+          <Case :cases="not_decided" :stateChangeText="'確定'" />
         </div>
       </div>
 
@@ -114,7 +114,7 @@
         data-bs-parent="#accordionFlushExample"
       >
         <div class="accordion-body case-state-info">
-          <Case :cases="decided" />
+          <Case :cases="decided" :stateChangeText="'完了'" />
         </div>
       </div>
 
@@ -125,8 +125,7 @@
         data-bs-parent="#accordionFlushExample"
       >
         <div class="accordion-body case-state-info">
-          <div class="cast-one">サンプル3</div>
-          <div class="cast-one">サンプル3</div>
+          <Case :cases="done" :stateChangeText="'リセット'" />
         </div>
       </div>
     </div>
@@ -137,7 +136,7 @@ import Slick from 'vue-slick'
 import Case from '../components/CaseComponent.vue'
 
 export default {
-  props: ['not_decided', 'decided'],
+  props: ['not_decided', 'decided', 'done'],
   data: function () {
     return {
       i_cast: 0,
